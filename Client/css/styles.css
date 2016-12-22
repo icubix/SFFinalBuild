@@ -16,6 +16,15 @@ body {
 	
 
 
+.centlog{
+	text-align:center;
+}
+
+.centlog a{
+text-align: center;
+display: block;
+text-decoration: underline;
+}
 
 h1 {
 	font-weight:300;
@@ -308,18 +317,21 @@ input:focus {
 	}	
 	
 .view {
-	float:right;
-	line-height:22px;
-	color:#fff;
-	font-weight:600;
-	margin-top:20px;
-	padding:0 15px;
-	background-color:#0e681f;
-	margin-left:5px;
+float: right;
+    line-height: 22px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 5px 15px;
+    background-color: #0e681f;
+    margin-left: 5px;
+    border-radius: 5px;
 	}
 
 .bg-red {
-	background-color:#CC6600
+	background-color: #CC6600;
+    padding: 5px 10px;
+    border-radius: 5px;
 	}	
 .view:hover {
 	color:#fff;
@@ -359,12 +371,12 @@ label {
 	border-bottom:solid 1px #ccc;
 	margin-bottom:10px;
 	display:inline-block;
-	padding:0 10px;
+	padding:10px 10px;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	}
 .graybg {
-	background-color:#f1f1f1;
+	background-color:#fff;
 	}
 	
 .border {

@@ -11,9 +11,10 @@ var app = angular.module('sfApp.schoolListRegister',['sfApp.slFactory','ngCookie
 //   }
 // });
 
-app.controller('SchoolList',function($scope, $rootScope,$cookieStore, schoollistFactory)
+app.controller('SchoolList',function($scope, $rootScope,$cookieStore, $window, schoollistFactory)
 {
   //alert("School List");
+  //$scope.schoolForm.instituteID = 2;
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){
@@ -26,11 +27,16 @@ if (navigator.geolocation) {
   }
 
 $scope.SaveSchoolInfo = function () {
- 
+// alert($scope.schoolForm.InstituteID);
   $scope.schoolForm.ClassGroups = 1;
    $scope.schoolForm.Description = "1sdm";
    schoollistFactory.SaveSchoolInfo($scope.schoolForm).success(function (resultData) {
-          return resultData;      
+          //return resultData;   
+          
+          if(resultData != null)   
+
+          $window.alert('Saved sucessfully.');
+           $scope.schoolListView();
       }).error(function (errorData) { 
         console.log(errorData);
       });
@@ -43,8 +49,7 @@ $scope.editDisplay=false;
 $scope.viewDisplay=false;
 
 $scope.EditSchool=function(resultData) {
-alert(resultData.InstituteID);
-           
+
        $scope.schoolForm.InstituteName = resultData.InstituteName;
        $scope.schoolForm.PhoneNumber =resultData.PhoneNumber;
        $scope.schoolForm.EmailAddress =resultData.EmailAddress;
@@ -59,10 +64,16 @@ alert(resultData.InstituteID);
        $scope.schoolForm.City=resultData.City;
        $scope.schoolForm.ZipCode=resultData.ZipCode;
        $scope.schoolForm.State=resultData.State;
-
-      $scope.editDisplay=true;
-      $scope.viewDisplay=false;
-            $scope.listDisplay=false;
+       $scope.schoolForm.InstituteID = resultData.InstituteID;
+       $scope.schoolForm.FirstName =resultData.FirstName;
+       $scope.schoolForm.LastName = resultData.LastName;
+       $scope.schoolForm.CardNumber = resultData.CardNumber;
+       $scope.schoolForm.CVV = resultData.CVV;
+       $scope.schoolForm.ExpiryMonth = resultData.ExpiryMonth;
+       $scope.schoolForm.ExpiryYear = resultData.ExpiryYear;
+       $scope.editDisplay=true;
+       $scope.viewDisplay=false;
+       $scope.listDisplay=false;
       
 };
 
@@ -100,7 +111,8 @@ $scope.cancelSchool =function() {
              $scope.schoolForm.City=resultData.City;
              $scope.schoolForm.ZipCode=resultData.ZipCode;
              $scope.schoolForm.State=resultData.State;
-
+             $scope.schoolForm.InstituteID = resultData.InstituteID;
+             
              $scope.editDisplay=false;
              $scope.viewDisplay=true;
              $scope.listDisplay=false;
@@ -109,9 +121,25 @@ $scope.cancelSchool =function() {
       
 
    (function () {
+// ngDialog.open({
+//     template: '<p>my template</p>',
+//     plain: true
+// });
+ // $window.alert('Hi!! ');
+    // $mdDialog.show(
+    //               $mdDialog.alert()
+    //                  .parent(angular.element(document.querySelector('#dialogContainer')))
+    //                  .clickOutsideToClose(true)
+    //                  .title('TutorialsPoint.com')
+    //                  .textContent('Welcome to TutorialsPoint.com')
+    //                  .ariaLabel('Welcome to TutorialsPoint.com')
+    //                  .ok('Ok!')
+    //                  .targetEvent(ev)
+    //            );
+
    $scope.listDisplay=true;
    $scope.schoolListView();
-    $rootScope.disPage = false;
+   
    $rootScope.UserID = $cookieStore.get('UserID');
    //$rootScope.UserName = $cookieStore.get("UserName");
    // alert($scope.UserID);

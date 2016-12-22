@@ -12,9 +12,8 @@ return{
 
 	SaveSchoolInfo: function (data) {
 	 	
-	 	//alert(data);
             return $http({
-                url: urls.apiUrl + 'schoolRoute/AddSchool',
+                url: urls.apiUrl + 'schoolRoute/UpdateSchool',
                 method: "POST",
               //  data: '=' + encodeURIComponent(JSON.stringify(data)),
                data:data,

@@ -58,24 +58,21 @@
         <span style="color:red" ng-show="searchForm.ZipCode1.$dirty && searchForm.ZipCode1.$invalid">
         <span ng-show="searchForm.ZipCode1.$error.required">Zipcode is required.</span>
     </div>
-    </div>
-
-
-    <div class="col-md-4">
-    	<label>Latitude</label>
-		<input type="text"  class="form-control"  placeholder="Enter Range in Miles" data-ng-model="searchForm.lat" name="Latitude1" ng-required="true"/>
+     <div class="col-md-4">
+        <label>Latitude</label>
+        <input type="text"  class="form-control"  placeholder="Enter Range in Miles" data-ng-model="searchForm.lat" name="Latitude1" ng-required="true"/>
          <span style="color:red" ng-show="searchForm.Latitude1.$dirty && searchForm.Latitude1.$invalid">
         <span ng-show="searchForm.Latitude1.$error.required">Latitude is required.</span>
     </div>
     <div class="col-md-4">
-    	<label>Longitude</label>
-		<input type="text"   class="form-control" placeholder="Enter Range in Miles" data-ng-model="searchForm.long" name="Longitude" ng-required="true"/>
+        <label>Longitude</label>
+        <input type="text"   class="form-control" placeholder="Enter Range in Miles" data-ng-model="searchForm.long" name="Longitude" ng-required="true"/>
          <span style="color:red" ng-show="searchForm.Longitude.$dirty && searchForm.Longitude.$invalid">
         <span ng-show="searchForm.Longitude.$error.required">Longitutude is required.</span>
     </div>
     </div>
-    <div class="row margin-bot">
-        <div class="col-md-2">
+     <div class="row margin-bot">
+        <div class="col-md-4">
             <label for="sel1">Radius</label>
             <select class="form-control"  data-ng-model="searchForm.radius" ng-required="true" name="radius1">
                  <option value="">Select miles or less</option>
@@ -93,6 +90,10 @@
              <button class="search-but move-right"  data-ng-click="GetSearch()">Search</button>
         </div>
     </div>
+
+   
+    </div>
+   
       
 
     </form>
@@ -169,7 +170,11 @@
                            <strong>Longitude:</strong>{{searchForm.Longitude}}
                         </div>
                     </div> 
-                    <div class="col-md-12 school-row-col graybg">
+                   
+                    <div calss="col-md-12">
+                        <div calss="col-md-12">
+                     <div class="school-row-col graybg">
+
                     
                        <strong>Adress:</strong>
                             {{searchForm.Street1}},
@@ -178,6 +183,8 @@
                             {{searchForm.State}} ,
                             ZipCode:{{searchForm.ZipCode}}
                     </div>
+                    </div>
+                    </div>  
                 </div>
                     
                     

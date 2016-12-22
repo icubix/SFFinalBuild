@@ -1,5 +1,6 @@
 
 var app = angular.module('sfApp.addschoolctrl',['sfApp.addSlFactory']);
+
 app.controller('AddSchool',function($scope, $rootScope, $location,$cookieStore,addSchoolFactory)
 {
 	//alert("helo");
@@ -44,7 +45,7 @@ var dataschool = {
      addSchoolFactory.SaveAddSchool($scope.addSchoolForm).success(function (resultData) {
             //$scope.success = resultData;  
             console.log(resultData);      
-            $location.path('/SchoolList');
+            return resultData;  
 
         }).error(function (errorData) { 
           console.log(errorData);

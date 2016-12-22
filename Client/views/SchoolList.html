@@ -40,8 +40,6 @@
       
     </div>
   </div> -->
-     	 {{UserID}}
-        {{UserName}} 
         	<div class="container">
             <div ng-show="listDisplay">
                         <h3>Schools</h3>
@@ -53,7 +51,8 @@
             <!-- <div class="right-col" >
             	{{item.info}}
             </div> -->
-            {{ item.AddressID}}, {{item.Street1 }}, {{item.Street2 }}, {{item.Area }}
+            {{item.Street1 }}, {{item.Street2 }}, {{item.Area }}
+          
             <a class="view bg-red" data-ng-click="EditSchool(item)">Edit</a>
             <a  class="view" data-ng-click="ViewSchool(item)">View</a>
 
@@ -71,6 +70,10 @@
                                
                 
                 <div class="row margin-bot" ng-show="viewDisplay">
+                      <div class="col-md-12  text-center  margin-bot">
+                            <A ><button type="submit" style="display:none" class="btn btn-success m-t-xs">Edit</button></A>
+                             <a class="view bg-red" data-ng-click="cancelSchool()">Back</a>
+                     </div>    
                     <h3>School Basic Information</h3>
                     
                     <div class="col-md-4 border">
@@ -79,11 +82,11 @@
                         <div class="col-md-12 address">
                             <br>
                             <strong>Adress:</strong><br>
-                            1601 16th <br>
-                            Street Southeast[1] <br>
-                            District of Alabama, <br>
-                            Alabama <br>
-                            ZipCode:12345
+                            {{schoolForm.Street1}},
+                            {{schoolForm.Street2}},
+                            {{schoolForm.City}}
+                            {{schoolForm.State}} ,
+                            ZipCode:{{schoolForm.ZipCode}}
                              
                         </div>
                     </div>
@@ -152,7 +155,7 @@
                         
                     </div> 
                     
-                    <div class="row">
+                   <!--  <div class="row">
                          
                             
                         <div class="col-md-12">
@@ -172,12 +175,12 @@
                             </div>
                             <div class="col-md-6"> 
                                 <div class="school-row-col graybg">
-                                   <strong>Credit Card Number:</strong> 1223456789 
+                                   <strong>Credit Card Number:</strong>  
                                 </div>
                             </div>
                             <div class="col-md-6"> 
                                 <div class="school-row-col graybg">
-                                   <strong>CVV Number:</strong> 122 
+                                   <strong>CVV Number:</strong>  
                                 </div>
                             </div>
                            
@@ -186,7 +189,7 @@
                              
                                 <div class="col-md-6"> 
                                     <div class="school-row-col graybg">
-                                       <strong>Expiry Month:</strong> January 
+                                       <strong>Expiry Month:</strong>  
                                     </div>
                                 </div>
         
@@ -200,15 +203,12 @@
                         </div>
                         </div>    
                         </div>
-                        </div>
+                        </div> -->
                         
                 </div>
                     
                     
-                       <div class="col-md-12  text-center  margin-bot">
-                            <A ><button type="submit" class="btn btn-success m-t-xs">Edit</button></A>
-                             <a class="view bg-red" data-ng-click="cancelSchool()">Cancel</a>
-                     </div>                 
+                                  
                                     
                         
                 </div>
@@ -225,7 +225,9 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="col-md-4">
-                                            <label>School Name</label>
+                                            <label>School Name </label>
+
+                                            <!-- <input type="hidden" name="InstituteID1" value="{{schoolForm.InstituteID}}" /> -->
                                             <input type="text" class="form-control" placeholder="Anacostia Senior High School" ng-model="schoolForm.InstituteName" required="true" name="schoolName">
                                             <span style="color:red" ng-show="schoolForm.schoolName.$dirty && schoolForm.schoolName.$invalid">
                                             <span ng-show="schoolForm.schoolName.$error.required">Schoolname is required.</span>
@@ -235,7 +237,6 @@
                                             <div class="element_pos">
                                         <select class="form-control" ng-model="myForm.SchoolID" name="typeOfSchool" required="true" >
                                          <option value="">Select School</option>
-                                            <option value="0">Co-Education</option>
                                             <option value="1">Co-Education</option>
                                             <option value="2">Boys</option>
                                             <option value="3">Girls</option>
@@ -454,21 +455,18 @@
                                     </div>
                                 </div>
                                 
-                                
-                                
-                                <div class="row text-center margin-bot">
-                                    <button  class="btn btn-success m-t-xs"  ng-disabled="schoolForm.$invalid" data-ng-click="SaveSchoolInfo()">Save</button>
+                                <div class="row margin-bot">
+                                <div class="col-md-12">
+                                    <div class="col-md-4 pull-right">
+                                         <button  class="btn btn-success"  ng-disabled="schoolForm.$invalid" data-ng-click="SaveSchoolInfo()">Update</button>
                                     <a class="view bg-red" data-ng-click="cancelSchool()">Cancel</a>
+                                    </div>
+                                </div>
+
+                                   
                                 </div>
                                 
                             </form>
-
-               
           </div> 
-		
-  <!-- <script src="js/jquery.js"></script>
-
-    <script src="js/bootstrap.js"></script>  -->    
-        
     </body>
 </html>
