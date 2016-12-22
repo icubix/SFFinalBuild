@@ -1,0 +1,196 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>School Finder</title>
+
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="css/styles.css" />
+    <link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+</head>
+
+<body class="bg">
+
+<!-- <div class="top-red-bar">
+    <div class="container">
+      <h1 class="navbar-brand navbar-brand_"> <img alt="" src="images/ati-logo.png"> </h1>
+      
+        <div class="head-rt move-right">
+        	<ul>
+                <li><A href="#Login">Login</A></li>                
+            </ul>
+        </div>
+      
+    </div>
+  </div> -->
+   
+      
+	
+	
+<form class="inner index" style="text-align:left; font-weight:400" name="searchForm" novalidate ng-show="searchDisplay" >
+<div class="search-box">
+<h1 class="margin-bot">Enter Home Address to find schools in your area</h1>
+
+<div class="row margin-bot">
+	<div class="col-md-4">
+    	<label>Address 1 <span class="required"><i class="fa fa-star" aria-hidden="true"></i></span></label>
+		<input type="text" class="form-control" placeholder="Enter Address 1" data-ng-model="searchForm.addressOne" name="Add1" ng-required="true" />
+        <span style="color:red" ng-show="searchForm.Add1.$dirty && searchForm.Add1.$invalid">
+        <span ng-show="searchForm.Add1.$error.required">Address1 is required.</span>
+    </div>
+    <div class="col-md-4">
+    	<label>Address 2 <span class="required"><i class="fa fa-star" aria-hidden="true"></i></span></label>
+		<input type="text"  class="form-control" placeholder="Enter Address 2" data-ng-model="searchForm.addressTwo" name="Add2"/>
+    </div>
+    <div class="col-md-4">
+    	<label>State <span class="required"><i class="fa fa-star" aria-hidden="true"></i></span></label>
+		<input type="text"  class="form-control" placeholder="Enter State" data-ng-model="searchForm.state" name="State1" ng-required="true"/>
+        <span style="color:red" ng-show="searchForm.State1.$dirty && searchForm.State1.$invalid">
+        <span ng-show="searchForm.State1.$error.required">State is required.</span>
+    </div>
+</div>    
+<div class="row margin-bot">	
+	<div class="col-md-4">
+    	<label>ZipCode <span class="required"><i class="fa fa-star" aria-hidden="true"></i></span></label>
+		<input type="text"  class="form-control"  placeholder="Enter ZipCode" data-ng-model="searchForm.Zipcode" name="ZipCode1" ng-required="true"/>
+        <span style="color:red" ng-show="searchForm.ZipCode1.$dirty && searchForm.ZipCode1.$invalid">
+        <span ng-show="searchForm.ZipCode1.$error.required">Zipcode is required.</span>
+    </div>
+    </div>
+
+
+    <div class="col-md-4">
+    	<label>Latitude</label>
+		<input type="text"  class="form-control"  placeholder="Enter Range in Miles" data-ng-model="searchForm.lat" name="Latitude1" ng-required="true"/>
+         <span style="color:red" ng-show="searchForm.Latitude1.$dirty && searchForm.Latitude1.$invalid">
+        <span ng-show="searchForm.Latitude1.$error.required">Latitude is required.</span>
+    </div>
+    <div class="col-md-4">
+    	<label>Longitude</label>
+		<input type="text"   class="form-control" placeholder="Enter Range in Miles" data-ng-model="searchForm.long" name="Longitude" ng-required="true"/>
+         <span style="color:red" ng-show="searchForm.Longitude.$dirty && searchForm.Longitude.$invalid">
+        <span ng-show="searchForm.Longitude.$error.required">Longitutude is required.</span>
+    </div>
+    </div>
+    <div class="row margin-bot">
+        <div class="col-md-2">
+            <label for="sel1">Radius</label>
+            <select class="form-control"  data-ng-model="searchForm.radius" ng-required="true" name="radius1">
+                 <option value="">Select miles or less</option>
+                <option value="5">5 miles or less</option>
+                <option value="10">10 miles or less</option>
+                <option value="15">15 miles or less</option>
+                <option value="20">20 miles or less</option>
+            </select>
+               <span style="color:red" ng-show="searchForm.radius1.$dirty && searchForm.radius1.$invalid">
+        <span ng-show="searchForm.radius1.$error.required">Select miles or less.</span>
+        </div>
+        <div class="col-md-4 move-right">
+            <label for="sel1">&nbsp;</label>
+         <!--    <a href="#GenSchoolSearch" class="search-but move-right"  >search</a> -->
+             <button class="search-but move-right"  data-ng-click="GetSearch()">Search</button>
+        </div>
+    </div>
+      
+
+    </form>
+  <div class="school-list" ng-show="listDisplay">
+
+        <div class="school-row" ng-repeat="item in data" >
+            <div class="left-col">{{item.InstituteName}}</div>
+            <div class="right-col">
+                 {{ item.AddressID}}, {{item.Street1 }}, {{item.Street2 }}, {{item.Area }}
+                <a href="" class="view" data-ng-click="GetSearchView(item)">View</a>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="container" ng-show="viewDisplay">
+                                
+                               
+                
+                <div class="row margin-bot">
+                    <h3>Anacostia Senior High School</h3>
+                    
+                    <div class="col-md-4 border">
+                    
+                        <div class="ImageDiv"><img src="images/school-pic.jpg"></div>
+                        <div class="col-md-12 address">
+                          
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                    <div class="col-md-6">
+                        
+                        <div class="school-row-col graybg">
+                           <strong>School Name:</strong> {{searchForm.InstituteName}}
+                        </div>
+                        
+                        <div class="school-row-col graybg">
+                            <strong>Type of School:</strong> {{}}
+                        </div>
+                        
+                        <div class="school-row-col graybg">
+                            <strong>Type of Recognition: </strong>{{}}
+                        </div>
+                     
+                        <div class="school-row-col graybg">
+                            <strong>Phone Number: </strong>{{searchForm.PhoneNumber}}
+                        </div>
+                        <div class="school-row-col graybg">
+                            <strong>Email: </strong>{{searchForm.EmailAddress}}
+                        </div>
+                     
+                        <div class="school-row-col graybg">
+                            <strong>Website: </strong>{{searchForm.Website}}
+                        </div>
+                        
+                     </div>
+                        
+                     <div class="col-md-6">   
+                        <div class="school-row-col graybg">
+                            <strong>Number of Students: </strong>{{searchForm.NoOfStudents}}
+                        </div>
+                        
+                        <div class="school-row-col graybg">
+                            <strong>Number of Teachers: </strong>{{searchForm.NoOfTeachers}}
+                        </div>
+                        <div class="school-row-col graybg">
+                            <strong> Teacher Student Ratio: </strong>{{searchForm.SchoolChildrenRatio}}
+                        </div>
+                        <div class="school-row-col graybg">
+                           <strong>Latitude:</strong> {{searchForm.Latitude}}
+                        </div>
+                        <div class="school-row-col graybg">
+                           <strong>Longitude:</strong>{{searchForm.Longitude}}
+                        </div>
+                    </div> 
+                    <div class="col-md-12 school-row-col graybg">
+                    
+                       <strong>Adress:</strong>
+                            {{searchForm.Street1}},
+                            {{searchForm.Street2}},
+                             {{searchForm.City}}
+                            {{searchForm.State}} ,
+                            ZipCode:{{searchForm.ZipCode}}
+                    </div>
+                </div>
+                    
+                    
+                                        
+                                    
+                        
+                </div>
+                
+               
+          </div> 
+
+
+
+
+</body>
+</html>

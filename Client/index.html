@@ -1,0 +1,71 @@
+<html ng-app="sfApp">
+<head>
+	<title>
+		School Finder
+	</title>
+	<!-- <script src="/Client/js/angular.min.js"></script>
+	<script src="/Client/js/angular-route.min.js"></script> -->
+	
+
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+	<script src="/js/angular-cookies.js"></script>
+
+	 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+<div class="top-red-bar">
+    <div class="container">
+      <h1 class="navbar-brand navbar-brand_"> <A href="index.html"><img alt="" src="images/ati-logo.png"></A> 
+      </h1>
+     <!-- {{UserID}} -->
+        <div class="head-rt move-right">
+        	<ul ng-if="UserID != '' ">
+            	<!-- <li>Admin is Logged in </li>
+                
+                <li><A href="admin-school-list.html">School List</A></li> -->
+                
+                <!--{{UserName}} <li ng-hide="{{RoleID != 3}}"><A href="#AddSchool">Add School</A></li>
+                <li ng-hide="{{UserID != 0}}"><A href="#Login">Login</A></li>--> 
+               
+
+                 <li><A href="#AddSchool">Add School</A></li>
+                               
+ 				 <li>Logged in As: {{UserName}} <a href="#Logout"> Logout</a></li>
+                
+            </ul>
+          
+	           <ul ng-if="UserID == '' ">
+	           <li><A href="#Login">Login</A></li> 
+	           </ul>
+        </div>
+       
+    </div>
+  </div>
+	<div ng-view></div>
+	<script src="/route/app.js"></script>
+	<script src="/route/config.js"></script>
+	<script src="/controller/AppCtrl.js"></script>
+	<script src="/service/schoolService.js"></script>
+	<script src="/factory/schoolFactoryService.js"></script>
+	<script src="/controller/RegisterCtrl.js"></script>
+	<script src="/factory/RegisterFactoryService.js"></script>
+	<script src="/factory/LoginFactoryService.js"></script>
+	<script src="/controller/LoginCtrl.js"></script>
+	<script src="/factory/SchoolListFactoryService.js"></script>
+	<script src="/controller/SchoolListCtrl.js"></script>
+	<script src="/factory/SchoolInfoFactoryService.js"></script>
+	<script src="/controller/SchoolInfoCtrl.js"></script>
+	<script src="/factory/AddSchoolFactoryService.js"></script>
+	<script src="/controller/AddSchoolCtrl.js"></script>
+	<script src="/controller/Logout.js"></script>
+	<script src="/factory/SchoolSearchFactoryService.js"></script>
+	<script src="/controller/SchoolSearchCtrl.js"></script>
+	<script src="/factory/GenSchoolSearchFactoryService.js"></script>
+	<script src="/controller/GenSchoolSearchCtrl.js"></script>
+
+	
+</body>
+</html>
