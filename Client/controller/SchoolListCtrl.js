@@ -36,7 +36,7 @@ $scope.SaveSchoolInfo = function () {
           if(resultData != null)   
 
           $window.alert('Saved sucessfully.');
-           $scope.schoolListView();
+           $scope.schoolListView(userid, roleName);
       }).error(function (errorData) { 
         console.log(errorData);
       });
@@ -83,8 +83,8 @@ $scope.cancelSchool =function() {
       $scope.listDisplay=true;
 };
 
-   $scope.schoolListView = function(){
-     schoollistFactory.GetSchools().success(function (resultData) {
+   $scope.schoolListView = function(userId, roleName){
+     schoollistFactory.GetSchools(userId, roleName).success(function (resultData) {
          
             $scope.data = resultData;
             $scope.editDisplay=false;
@@ -138,9 +138,10 @@ $scope.cancelSchool =function() {
     //            );
 
    $scope.listDisplay=true;
-   $scope.schoolListView();
+   $scope.schoolListView($scope.UserID, $scope.RoleName);
    
-   $rootScope.UserID = $cookieStore.get('UserID');
+   $scope.UserID = $cookieStore.get('UserID');
+   $scope.RoleName = $cookieStore.get('RoleName');
    //$rootScope.UserName = $cookieStore.get("UserName");
    // alert($scope.UserID);
    // alert("kali");

@@ -41,7 +41,7 @@ var dataschool = {
 };
     $scope.addSchoolForm.ClassGroups = 1;
      $scope.addSchoolForm.Description = "1sdm";
-     $scope.addSchoolForm.UserID = 47;
+     $scope.addSchoolForm.UserID = $cookieStore.get('UserID');
      addSchoolFactory.SaveAddSchool($scope.addSchoolForm).success(function (resultData) {
             //$scope.success = resultData;  
             console.log(resultData);      

@@ -20,10 +20,10 @@ return{
             })
         },
 
-        GetSchools : function(){
+        GetSchools : function(userId, roleName){
         
-        	var url = urls.apiUrl +'schoolRoute/getSchools';
-
+        	var url = urls.apiUrl +'schoolRoute/getSchools/' + userId + "/" + roleName;
+            console.log(url);
             return $http.get(url);
         },
 

@@ -15,10 +15,15 @@ app.controller('Login',function($scope, $rootScope, $location,$cookieStore,login
             {
               $cookieStore.put("UserID", resultData[0].UserID);
               $cookieStore.put("UserName",resultData[0].UserName);
+              $cookieStore.put("RoleID",resultData[0].RoleID);
+              $cookieStore.put("RoleName",resultData[0].RoleName);
               $rootScope.UserID = $cookieStore.get("UserID");
               $rootScope.UserName = $cookieStore.get("UserName");
-              $rootScope.RoleID = 3;
-              $rootScope.RoleName = "User";
+              $rootScope.RoleID = $cookieStore.get("RoleID");
+              $rootScope.RoleName = $cookieStore.get("RoleName");
+
+              //$rootScope.RoleID = 3;
+             // $rootScope.RoleName = "User";
             	$location.path('/SchoolList');
             } 
             else
